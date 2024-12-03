@@ -9,7 +9,7 @@ import { TenantServiceFactory } from './api/TenantServiceFactory'; // Import Ten
 import { CopilotServiceFactory } from './api/CopilotServiceFactory'; //for both usage and seat service
 import { ITenantStorage } from './api/ITenantStorage'; // Import ITenantStorage
 import { validateScope, ScopeValidationResult } from './api/validateInput'; 
-import { childTeamEnabled,tenantAutoSave } from '../config'; 
+import { childTeamEnabled, tenantAutoSave, serverUrl } from '../config'; // Import serverUrl from config
 
 let usageService: any; // Declare usageService in a broader scope
 
@@ -27,7 +27,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${port}`,
+                url: serverUrl, // Use serverUrl from config
             },
         ],
         components: {

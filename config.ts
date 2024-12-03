@@ -1,5 +1,8 @@
 import dotenv from 'dotenv';
 
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 3000;
+
 // load environment variables from .env file
 dotenv.config();
 
@@ -12,7 +15,8 @@ const {
   DB_DATABASE,
   DB_PORT,
   CHILD_TEAM_ENABLED,
-  TENANT_AUTO_SAVE
+  TENANT_AUTO_SAVE,
+  SERVER_URL // Add SERVER_URL
 } = process.env;
 
 // to check whether STORAGE_TYPE is  'mysql'，it it is, need to check the database related parameters.
@@ -56,6 +60,15 @@ export class Storage_Config {
     }
   }
 }
+
+// Define the host and port variables from environment variables or default values
+
+// Export the host and port constants
+export const serverHost = HOST;
+export const serverPort = PORT;
+
+// Export serverUrl from environment variable or default to localhost
+export const serverUrl = SERVER_URL || `http://${HOST}:${PORT}`;
 
 // Export a constant instance of Storage_Config
 export const storage_config = new Storage_Config();
